@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Header from "./Components/Header";
+import Form from "./Components/Form";
+import Footer from "./Components/Footer";
+import TodoItem from "./Components/TodoItem";
 
-function App() {
+const App = () => {
+  const [inputText, setInputText] = useState("");
+  const [todos, setTodos] = useState([]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+
+      <Form
+        setInputText={setInputText}
+        inputText={inputText}
+        todos={todos}
+        setTodos={setTodos}
+      />
+
+      <TodoItem todos={todos} setTodos={setTodos} />
+
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;
