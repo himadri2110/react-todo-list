@@ -25,14 +25,28 @@ const TodoItem = ({ todos, setTodos }) => {
   }
 
   const todoComponent = todos.map((todo) => (
-    <li style={todo.completed ? completedStyle : null} key={todo.id}>
-      {todo.text}
-      <button onClick={() => todoComplete(todo)}>Done</button>
-      <button onClick={() => todoDelete(todo)}>Delete</button>
-    </li>
+    <div className="todo">
+      <li
+        style={todo.completed ? completedStyle : null}
+        key={todo.id}
+        className="todo-item"
+      >
+        {todo.text}
+      </li>
+      <button onClick={() => todoComplete(todo)} className="check">
+        <i className="fa fa-check"></i>
+      </button>
+      <button onClick={() => todoDelete(todo)} className="delete">
+        <i className="fa fa-trash"></i>
+      </button>
+    </div>
   ));
 
-  return <div>{todoComponent}</div>;
+  return (
+    <div className="todo-container">
+      <ul className="todo-list">{todoComponent}</ul>
+    </div>
+  );
 };
 
 export default TodoItem;
