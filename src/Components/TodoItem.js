@@ -1,11 +1,13 @@
 import React from "react";
 
-const TodoItem = ({ todos, setTodos }) => {
+const TodoItem = ({ todos, setTodos, filteredTodos }) => {
+  // Styling complete todos
   const completedStyle = {
     color: "#cdcdcd",
     textDecoration: "line-through",
   };
 
+  // Mark todos as complete
   function todoComplete(todo) {
     setTodos(
       todos.map((el) => {
@@ -20,11 +22,13 @@ const TodoItem = ({ todos, setTodos }) => {
     );
   }
 
+  // Delete todos
   function todoDelete(todo) {
     setTodos(todos.filter((el) => el.id !== todo.id));
   }
 
-  const todoComponent = todos.map((todo) => (
+  // Get todos based on status (filtered todos)
+  const todoComponent = filteredTodos.map((todo) => (
     <div className="todo">
       <li
         style={todo.completed ? completedStyle : null}
